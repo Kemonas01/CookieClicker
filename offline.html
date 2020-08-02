@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Spectre CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="manifest" href="./manifest.json">
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <!-- Manifest -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Weather PWA">
+  <link rel="apple-touch-icon" href="/images/icons/icon-152x152.png">
+  <meta name="theme-color" content="#2F3BA2" />
+  <meta name="description" content="A sample weather app">
+  <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+          .then((reg) => {
+            console.log('Service worker registered.', reg);
+          });
+    });
+  }
+  </script>
+  <title>Cookie clicker</title>
+</head>
+
+<body>
+  <div class="container">
+
+    <header class="navbar">
+      <section class="navbar-section">
+        <span class="navbar-brand mr-2">Cookie clicker</span>
+      </section>
+      <section class="navbar-section">
+        <div class="input-group input-inline">
+          <i class="icon icon-plus"></i>
+        </div>
+      </section>
+    </header>
+
+    <div class="columns mt-2">
+      <div class="column col-4"></div>
+      <div class="column col-4"></div>
+      <div class="column col-4"></div>
+      <div class="column col-4"></div>
+      <div class="column col-4"><img id="cookie" src="images/PerfectCookie.png" class="img-responsive" alt="cookie">
+      </div>
+      <div class="column col-4"></div>
+      <div class="column col-4"></div>
+      <div class="column col-4"></div>
+      <div class="column col-4"></div>
+    </div>
+
+    <div class="columns mt-2">
+      <div class="column col-12">
+        <button>start</button>
+      </div>
+    </div>
+    <div class="fame" name="fame">
+
+    </div>
+    <br>
+    <br>
+    <br>
+    <div id="state" class="columns mt-2 d-none">
+      <div class="column col-6">
+        <span id="score">0</span>
+      </div>
+      <div class="column col-6">
+        <span class ='hidden' id="time">15</span>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="modal" id="modal-settings">
+    <a href="#close" class="modal-overlay close" aria-label="Close"></a>
+    <div class="modal-container">
+      <div class="modal-header">
+        <a href="#close" class="btn btn-clear close float-right" aria-label="Close"></a>
+        <div class="modal-title h5">Settings</div>
+        
+      </div>
+      <div class="modal-body">
+        <div id='header' class="content">
+          <div class="form-group">
+            <label class="form-label">Background</label>
+            <input id ='color' class="form-input" type="color">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Difficulty</label>
+            <label class="form-radio">
+              <input type="radio" name="level" value="3" checked>
+              <i class="form-icon"></i> easy
+            </label>
+            <label class="form-radio">
+              <input type="radio" name="level" value="2">
+              <i class="form-icon"></i> medium
+            </label>
+            <label class="form-radio">
+              <input type="radio" name="level" value="1">
+              <i class="form-icon"></i> hard
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-share">
+    <a href="#close" class="modal-overlay close" aria-label="Close"></a>
+    <div class="modal-container">
+      <div class="modal-header">
+        <a href="#close" class="btn btn-clear close float-right" aria-label="Close"></a>
+        <div class="modal-title h5">Game over</div>
+      </div>
+      <div  class="modal-body">
+        <div class="content">
+          <p>
+            <img src="images/GrandmaIconLarge.png" alt="Grandma">
+            <span id="click-count"></span> clicks in 15 seconds, not that bad kid!
+          </p>
+        </div>
+      </div>
+      <div>
+        <form name ="test" id ="hall_of_fame" action="./save_score.php" class="hall_of_fame" method="GET">
+          Nickname : <input type="text" name="nickname">
+          <input id="valueScore" type="text" name="score" value='0' hidden>
+          <input name="buttonScore" type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+  </div>
+
+  
+  <script src="js/script.js"></script>
+</body>
+
+</html>
